@@ -54,6 +54,13 @@ class SearchResults extends Component {
   }
 
   //NEED AJAX request for JSON to set data
+  componentDidMount() {
+    axios.get('http://localhost:3000/flights')
+    .then(response => {
+      console.log(response);
+    })
+    .catch(console.warn)
+  }
 
   render() {
     // console.log(this.props.match.params.from)

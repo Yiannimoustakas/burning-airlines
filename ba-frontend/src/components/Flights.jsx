@@ -2,24 +2,9 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 
-function Seat(props) {
-  return (
-    <button className="seat" onClick={props.onClick}>
-      {props.value}
-    </button>
-  )
-}
+
 
 class Planeseats extends Component {
-  renderSeat() {
-    return(
-      <Seat
-        value="USER"
-        onClick={() => this.handleClick}
-      />
-    )
-  }
-
   render() {
     return (
       <div>

@@ -8,6 +8,7 @@ const FlightInfo = props => {
   let filteredFlights = [];
   // console.log(props.to)
   // console.log(props.from)
+  // console.log(props);
   filteredFlights = props.flights.filter(flight => flight.destination === props.to && flight.origin === props.from)
   // console.log(filteredFlights)
   return (
@@ -15,9 +16,9 @@ const FlightInfo = props => {
       {filteredFlights.map(el =>
         <li key={el.flight}>
           <span className='result'>{el.date}</span>
-          <Link className='result' to={`/flights/${el.flight}`}>{el.flight}</Link>
+          <Link className='result' to={`/flights/${el.id}`}>{el.id}</Link>
           <span className='result'>{el.origin} > {el.destination}</span>
-          <span className='result'>{el.plane_id}</span>
+          <span className='result'>{el.flight_no}</span>
         </li>
       )}
     </div>
@@ -28,28 +29,7 @@ class SearchResults extends Component {
   constructor () {
     super();
     this.state = {
-      flights:
-      [{
-        flight: 3,
-        date: "2/3/18",
-        origin: 'JFK',
-        destination: 'SYD',
-        plane_id: 1
-      },
-    {
-      flight: 5,
-      date: "1/4/18",
-      origin: 'JFK',
-      destination: 'HKG',
-      plane_id: 2
-    },
-    {
-      flight: 1,
-      date: "6/2/18",
-      origin: 'JFK',
-      destination: 'SYD',
-      plane_id: 3
-    }],
+      flights: [],
     }
   }
 
@@ -57,7 +37,10 @@ class SearchResults extends Component {
   componentDidMount() {
     axios.get('http://localhost:3000/flights')
     .then(response => {
-      console.log(response);
+      console.log(response.data);
+      this.setState(this.state = {
+        flights: response.data
+      })
     })
     .catch(console.warn)
   }

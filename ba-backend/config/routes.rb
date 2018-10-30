@@ -1,30 +1,9 @@
 Rails.application.routes.draw do
-  get 'reservation/new'
-  get 'reservation/create'
-  get 'reservation/destroy'
-  get 'reservation/show'
-  get 'reservation/edit'
-  get 'reservation/update'
-  get 'airplane/new'
-  get 'airplane/create'
-  get 'airplane/destroy'
-  get 'airplane/show'
-  get 'airplane/edit'
-  get 'airplane/update'
-  get 'flight/new'
-  get 'flight/create'
-  get 'flight/destroy'
-  get 'flight/show'
-  get 'flight/edit'
-  get 'flight/update'
-  get 'user/new'
-  get 'user/create'
-  get 'user/destroy'
-  get 'user/show'
-  get 'user/edit'
-  get 'user/update'
-  get 'session/new'
-  get 'session/create'
-  get 'session/destroy'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :airplanes
+  resources :flights
+  resources :reservations
+  resources :users
+  get "/login" => "session#new"
+  post "/login" => "session#create"
+  delete "/login" => "session#destroy"
 end

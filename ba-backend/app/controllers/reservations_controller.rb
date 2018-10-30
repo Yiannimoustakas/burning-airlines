@@ -22,8 +22,8 @@ class ReservationsController < ApplicationController
   end
 
   def index
-    @reservation = Reserevation.all
-    render :json Reservation.all
+    # @reservation = Reserevation.all
+    render json: Reservation.all
   end
 
   def show

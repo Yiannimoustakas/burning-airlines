@@ -12,8 +12,8 @@ class AirplanesController < ApplicationController
   end
 
   def index
-    @airplane = Airplane.all
-    render :json Airplane.all
+    # @airplane = Airplane.all
+    render json: Airplane.all
   end
 
   def show

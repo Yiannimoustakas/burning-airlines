@@ -20,10 +20,10 @@ Airplane.destroy_all
 
 puts "Creating airplane..."
 
-a1 = Airplane.create name: '747', rows: 32, column: 4
-a2 = Airplane.create name: 'A330', rows: 58, column: 6
-a3 = Airplane.create name: '787', rows: 45, column: 4
-a4 = Airplane.create name: 'A380', rows: 80, column: 8
+a1 = Airplane.create name: '747', rows: 32, columns: 4
+a2 = Airplane.create name: 'A330', rows: 58, columns: 6
+a3 = Airplane.create name: '787', rows: 45, columns: 4
+a4 = Airplane.create name: 'A380', rows: 80, columns: 8
 
 puts "Created #{ Airplane.all.length } airplane: "
 puts Airplane.pluck(:name).join(', ')
@@ -51,16 +51,6 @@ Reservation.destroy_all
 
 puts "Creating flight reservations..."
 
-
-
-create_table "reservations", force: :cascade do |t|
-  t.integer "user_id"
-  t.integer "flight_id"
-  t.integer "seat_row"
-  t.integer "seat_column"
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
-end
 
 Reservation.create user: u1, flight: c1, seat_row: 1, seat_column: 1
 Reservation.create user: u2, flight: c2, seat_row: 4, seat_column: 3

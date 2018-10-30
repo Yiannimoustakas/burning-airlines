@@ -19,8 +19,8 @@ class UsersController < ApplicationController
   end
 
   def index
-    @user = User.all
-    render :json User.all
+    # @user = User.all
+    render json: User.all
   end
 
   def show

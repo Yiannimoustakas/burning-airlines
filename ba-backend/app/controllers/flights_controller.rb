@@ -12,8 +12,8 @@ class FlightsController < ApplicationController
   end
 
   def index
-    @flight = Flight.all
-    render :json Flight.all
+    # @flight = Flight.all
+    render json: Flight.all
   end
 
   def show

@@ -30,3 +30,12 @@
     transform: rotate(360deg);
   }
 }
+
+.result {
+  padding: 0 2em 0 2em;
+}
+
+.resultTitle {
+  text-decoration: underline;
+  font-weight: bold;
+}

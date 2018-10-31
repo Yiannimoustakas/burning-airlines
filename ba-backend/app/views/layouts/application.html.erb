@@ -10,6 +10,12 @@
   </head>
 
   <body>
+
+    <h1>Burning Airlines</h1>
+    <nav>
+    <h3><%= link_to 'Create New User', new_user_path %>|<%= link_to 'Create New Flight', new_flight_path %> | <%= link_to 'Back to Flights', flights_path %> | <%= link_to 'Airplane Listing', airplanes_path%> | <%= link_to 'Create New Airplane', new_airplane_path %></h3>
+    </nav>
+    <hr>
     <%= yield %>
   </body>
 </html>

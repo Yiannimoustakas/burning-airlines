@@ -1,12 +1,14 @@
-<h2><em><%= @flight.flight_no %></em></h2>
+<h2><%= @flight.flight_no %></h2>
+<hr>
 
-
-<p>Rows: <%= @flight.date %></p>
+<p>Flight: <%= @flight.date.to_formatted_s(:long_ordinal) %></p>
 <p>Origin: <%= @flight.origin %></p>
 <p>Destination: <%= @flight.destination %></p>
 
 <br>
 
+<%= link_to 'Back to Flights', flights_path %>
+|
 <%= link_to 'Edit This Flight', edit_flight_path(@flight) %>
 |
 <%= link_to 'Delete This Flight', flight_path(@flight), method: 'delete' %>

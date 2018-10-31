@@ -23,15 +23,9 @@ const createTable = props => {
 const Planeseats = props => {
   console.log(props);
     return (
-      <div>
-<<<<<<< HEAD
-
-=======
         <div>
           {createTable(props)}
         </div>
->>>>>>> e09f63551f808bd6e7b86c3b8160eddcf2a3ffbe
-      </div>
     )
 }
 

@@ -20,7 +20,7 @@ class FlightsController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @flights }
 
-  end #respons to
+    end #respond to
   end
 
   def show

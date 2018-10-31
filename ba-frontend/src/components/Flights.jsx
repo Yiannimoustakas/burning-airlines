@@ -3,43 +3,22 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import '../App.css'
 
-const createTable = props => {
-  console.log(props);
-  let table = []
-
-  // Outer loop to create parent
-  for (let i = 0; i < props.columns; i++) {
-    let children = []
-    //Inner loop to create children
-    for (let j = 0; j < props.rows; j++) {
-      children.push(<div><div>{`C${i + 1} R${j + 1}`}</div></div>)
-    }
-    //Create the parent and add the children
-    table.push(<div>{children}</div>)
-  }
-  return table
-}
-
-const Planeseats = props => {
-  console.log(props);
-    return (
-        <div>
-          {createTable(props)}
-        </div>
-    )
-}
-
 class Flights extends Component {
   constructor() {
     super()
     this.state = {
-      plane: {},
+      reservationState: [], //probably not needed
+      totalRows: [],
+      totalCols: [],
       flight: {},
-      reservations: [],
+      alreadyReserved: [], // not sure??
+      selectedSeat: {
+        row: null,
+        col: null,
+      }
     }
   }
 
-  // AJAX request to rails for user and current seats taken????
   componentDidMount() {
     const paramsFlightID = parseInt(this.props.match.params.flightid)
     const pararmsAirplaneID = parseInt(this.props.match.params.airplaneid)
@@ -47,11 +26,29 @@ class Flights extends Component {
     // get the particular plane
    axios.get('http://localhost:3000/airplanes.json')
    .then(response => {
-     let plane;
-     // console.log('array of plane objects: ', response.data)
-     plane = response.data.filter(el => el.id === pararmsAirplaneID)
+     let flightArray = [];
+     let plane = response.data.filter(el => el.id === pararmsAirplaneID);
+
+     let rowArray = new Array(plane[0].rows).fill(null);
+     let colArray = new Array(plane[0].columns).fill(null);
+
+     for (let i = 0; i < rowArray.length; i++) {
+       rowArray[i] = i + 1
+     }
+     for (let i = 0; i < colArray.length; i++) {
+       colArray[i] = i + 1
+     }
+
+     let emptyColArray = new Array(plane[0].columns).fill(null);
+
+     for (let i = 0; i < plane[0].rows; i++) {
+       flightArray.push(emptyColArray);
+     }
+
      this.setState({
-       plane: plane[0],
+       reservationState: flightArray,
+       totalRows: rowArray,
+       totalCols: colArray,
      })
    })
    .catch(console.warn)
@@ -73,27 +70,113 @@ class Flights extends Component {
    axios.get('http://localhost:3000/reservations.json')
    .then(response => {
      let reservationsTaken;
-     console.log(response.data);
-     reservationsTaken = response.data.filter(el => el.flight_id === paramsFlightID)
-     console.log(reservationsTaken)
+     let reservationsArray = [];
+     reservationsTaken = response.data.filter(el => el.flight_id === paramsFlightID) //array of objects
+
+     reservationsTaken.map(flight => {
+       reservationsArray.push([flight.seat_row, flight.seat_column])
+     }) //converting to array of arrays
      this.setState({
-       reservations: reservationsTaken
+       alreadyReserved: reservationsArray,
      })
    })
    .catch(console.warn)
 
   } // component did mount
 
+//FOR FUTURE SUBMIT BUTTON?
+  // axios.post('http://localhost:3000/reservations.json', {content: ???})
+  // .then(response => {
+  //   this.setState({
+  //     reservations: ????
+  //   })
+  // })
 
 
+  handleClick = (row, col) => {
+    console.log('row and col from FLIGHTS PARENT:', row, col);
+    this.setState({
+      selectedSeat: {
+        row: row,
+        col: col,
+      }
+
+    })
+  }
 
   render() {
     return(
       <div>
         <h1>FLIGHT with ID: {this.props.match.params.flightid}</h1>
-        <Planeseats rows={this.state.plane.rows} columns={this.state.plane.columns}/>
+        <h1> Selected Seat is (Row:{this.state.selectedSeat.row}, Col:{this.state.selectedSeat.col})</h1>
+        {this.state.totalRows.map(rowNumber =>
+          <Row
+            selectedSeat={this.state.selectedSeat}
+            rowPicked={rowNumber}
+            columnArray={this.state.totalCols}
+            onClick={this.handleClick}
+          />
+        )}
       </div>
 
+    )
+  }
+
+}
+
+class Row extends Component {
+  handleClick = (colNumber) => {
+    console.log(this.props.rowPicked)
+    this.props.onClick(this.props.rowPicked, colNumber)
+  }
+
+  render() {
+    return(
+      <div>
+        {this.props.columnArray.map(colNumber =>
+          <Seats
+            selectedSeat={this.props.selectedSeat}
+            className="row"
+            rowPicked={this.props.rowPicked}
+            columnPicked={colNumber}
+            onClick={this.handleClick}
+          />
+        )}
+      </div>
+    )
+  }
+}
+
+class Seats extends Component {
+  constructor() {
+    super();
+    this.state = {
+      clickedRow: null,
+      clickedCol: null,
+    }
+  }
+
+  handleClick = () => {
+    console.log(this.props.columnPicked);
+    this.props.onClick(this.props.columnPicked);
+
+    this.setState({
+      clickedRow: this.props.rowPicked,
+      clickedCol: this.props.columnPicked
+    })
+  }
+
+  render() {
+    const bgColor = (this.state.clickedRow === this.props.rowPicked && this.state.clickedColumn === this.props.colPicked) ? 'grey' : 'green';
+    return(
+      <div
+        style={{backgroundColor: bgColor}}
+        className='seat'
+        onClick={this.handleClick}
+      >
+        <div>row: {this.props.rowPicked}</div>
+        <div>col: {this.props.columnPicked}</div>
+      </div>
     )
   }
 }

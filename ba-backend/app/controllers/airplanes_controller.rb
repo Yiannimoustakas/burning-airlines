@@ -12,7 +12,7 @@ class AirplanesController < ApplicationController
   end
 
   def index
-    # @airplane = Airplane.all
+    # @airplanes = Airplane.all
     render json: Airplane.all
   end
 

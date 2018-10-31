@@ -1,0 +1,25 @@
+<%= form_for @flight do |f| %>
+  <fieldset>
+    <%= f.label :flight_no %><!-- gives us a <label> tag -->
+    <%= f.text_field :flight_no %> <!-- gives us <input type="text" name="name"> -->
+  </fieldset>
+  <fieldset>
+    <%= f.label :date, 'Flight Date' %>
+    <%= f.text_field :date %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :origin %>
+    <%= f.text_field :origin %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :destination %>
+    <%= f.text_field :destination %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :airplane_id, 'Airplane' %>
+    <%= f.collection_select :airplane_id, Airplane.all, :id, :name, prompt: 'Please choose an airplane:' %>
+  </fieldset>
+  <%= f.submit %>
+
+<% end %>

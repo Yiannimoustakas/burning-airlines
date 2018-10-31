@@ -16,7 +16,7 @@ const FlightInfo = props => {
       {filteredFlights.map(el =>
         <li key={el.flight}>
           <span className='result'>{el.date}</span>
-          <Link className='result' to={`/flights/${el.id}`}>{el.id}</Link>
+          <Link className='result' to={`/flights/${el.id}/${el.airplane_id}`}>{el.id}</Link>
           <span className='result'>{el.origin} > {el.destination}</span>
           <span className='result'>{el.flight_no}</span>
         </li>

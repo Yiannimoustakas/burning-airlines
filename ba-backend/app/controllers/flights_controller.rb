@@ -12,8 +12,15 @@ class FlightsController < ApplicationController
   end
 
   def index
-    # @flight = Flight.all
-    render json: Flight.all
+    @flights = Flight.all
+    # render json: Flight.all
+    # need to render out to html and json
+    respond_to do |format|
+
+      format.html # show.html.erb
+      format.json { render json: @flights }
+
+  end #respons to
   end
 
   def show

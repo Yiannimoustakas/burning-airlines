@@ -1,2 +1,12 @@
-<h1>Airplane#show</h1>
-<p>Find me in app/views/airplane/show.html.erb</p>
+<h2><em><%= @airplane.name %></em></h2>
+
+
+<p>Rows: <%= @airplane.rows %></p>
+<p>Columns: <%= @airplane.columns %></p>
+
+
+<br>
+
+<%= link_to 'Edit This Airplane', edit_airplane_path(@airplane) %>
+|
+<%= link_to 'Delete This Airplane', airplane_path(@airplane), method: 'delete' %>

@@ -800,9 +800,9 @@ Completed 200 OK in 52ms (Views: 42.2ms | ActiveRecord: 0.0ms)
 
 
 Started GET "/airplane" for 127.0.0.1 at 2018-10-31 09:29:10 +1100
-  
+
 ActionController::RoutingError (No route matches [GET] "/airplane"):
-  
+
 actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
@@ -831,18 +831,18 @@ puma (3.12.0) lib/puma/server.rb:472:in `process_client'
 puma (3.12.0) lib/puma/server.rb:332:in `block in run'
 puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
 Started GET "/airplanes" for 127.0.0.1 at 2018-10-31 09:29:25 +1100
-  
+
 SyntaxError (/Users/yiannimoustakas/wdi/projects/burning-airlines/ba-backend/app/controllers/airplanes_controller.rb:16: syntax error, unexpected tCONSTANT, expecting keyword_end
     render :json Airplane.all
                  ^~~~~~~~):
-  
+
 app/controllers/airplanes_controller.rb:16: syntax error, unexpected tCONSTANT, expecting keyword_end
 Started GET "/airplanes" for 127.0.0.1 at 2018-10-31 09:29:52 +1100
-  
+
 SyntaxError (/Users/yiannimoustakas/wdi/projects/burning-airlines/ba-backend/app/controllers/airplanes_controller.rb:16: syntax error, unexpected tCONSTANT, expecting keyword_end
     render :json Airplane.all
                  ^~~~~~~~):
-  
+
 app/controllers/airplanes_controller.rb:16: syntax error, unexpected tCONSTANT, expecting keyword_end
 Started GET "/airplanes" for 127.0.0.1 at 2018-10-31 09:30:11 +1100
 Processing by AirplanesController#index as HTML
@@ -856,14 +856,14 @@ Processing by ReservationsController#index as HTML
 Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
 
 
-  
+
 NameError (uninitialized constant ReservationsController::Reserevation):
-  
+
 app/controllers/reservations_controller.rb:25:in `index'
 Started GET "/reservation" for 127.0.0.1 at 2018-10-31 09:31:18 +1100
-  
+
 ActionController::RoutingError (No route matches [GET] "/reservation"):
-  
+
 actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
@@ -896,9 +896,9 @@ Processing by ReservationsController#index as HTML
 Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
 
 
-  
+
 NameError (uninitialized constant ReservationsController::Reserevation):
-  
+
 app/controllers/reservations_controller.rb:25:in `index'
 Started GET "/reservations" for 127.0.0.1 at 2018-10-31 09:31:42 +1100
 Processing by ReservationsController#index as HTML
@@ -915,9 +915,9 @@ Completed 200 OK in 30ms (Views: 16.2ms | ActiveRecord: 10.5ms)
 
 
 Started GET "/airplane/3" for 127.0.0.1 at 2018-10-31 09:33:02 +1100
-  
+
 ActionController::RoutingError (No route matches [GET] "/airplane/3"):
-  
+
 actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
@@ -1356,9 +1356,9 @@ Completed 200 OK in 22ms (Views: 8.9ms | ActiveRecord: 5.8ms)
 
 
 Started GET "/babel/parser/lib/index.js" for 127.0.0.1 at 2018-10-31 10:31:58 +1100
-  
+
 ActionController::RoutingError (No route matches [GET] "/babel/parser/lib/index.js"):
-  
+
 actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
@@ -1388,9 +1388,9 @@ puma (3.12.0) lib/puma/server.rb:472:in `process_client'
 puma (3.12.0) lib/puma/server.rb:332:in `block in run'
 puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
 Started GET "/babel/parser/lib/index.js" for 127.0.0.1 at 2018-10-31 10:32:38 +1100
-  
+
 ActionController::RoutingError (No route matches [GET] "/babel/parser/lib/index.js"):
-  
+
 actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
@@ -1532,9 +1532,9 @@ Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.3ms)
 
 
 Started GET "/airplane" for 127.0.0.1 at 2018-10-31 10:47:57 +1100
-  
+
 ActionController::RoutingError (No route matches [GET] "/airplane"):
-  
+
 actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
@@ -1606,9 +1606,9 @@ Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.9ms)
 
 
 Started GET "/babel/parser/lib/index.js" for 127.0.0.1 at 2018-10-31 11:27:08 +1100
-  
+
 ActionController::RoutingError (No route matches [GET] "/babel/parser/lib/index.js"):
-  
+
 actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
@@ -2282,9 +2282,9 @@ Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.3ms)
 
 
 Started GET "/babel/parser/lib/index.js" for 127.0.0.1 at 2018-10-31 12:13:23 +1100
-  
+
 ActionController::RoutingError (No route matches [GET] "/babel/parser/lib/index.js"):
-  
+
 actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
@@ -2398,9 +2398,9 @@ Completed 200 OK in 9ms (Views: 5.8ms | ActiveRecord: 0.0ms)
 
 
 Started GET "/flight" for 127.0.0.1 at 2018-10-31 12:26:34 +1100
-  
+
 ActionController::RoutingError (No route matches [GET] "/flight"):
-  
+
 actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
@@ -2697,9 +2697,9 @@ Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.6ms)
 
 Started GET "/flight" for 127.0.0.1 at 2018-10-31 14:16:36 +1100
 Started GET "/airplanes" for 127.0.0.1 at 2018-10-31 14:16:36 +1100
-  
+
 ActionController::RoutingError (No route matches [GET] "/flight"):
-  
+
 actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
@@ -2737,9 +2737,9 @@ Completed 200 OK in 78ms (Views: 25.9ms | ActiveRecord: 51.6ms)
 Started GET "/airplanes" for 127.0.0.1 at 2018-10-31 14:16:42 +1100
 Started GET "/flight" for 127.0.0.1 at 2018-10-31 14:16:42 +1100
 Processing by AirplanesController#index as HTML
-  
+
 ActionController::RoutingError (No route matches [GET] "/flight"):
-  
+
 actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
@@ -2776,9 +2776,9 @@ Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.8ms)
 Started GET "/airplanes" for 127.0.0.1 at 2018-10-31 14:24:03 +1100
 Started GET "/flight" for 127.0.0.1 at 2018-10-31 14:24:03 +1100
 Processing by AirplanesController#index as HTML
-  
+
 ActionController::RoutingError (No route matches [GET] "/flight"):
-  
+
 actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
@@ -2815,14 +2815,14 @@ Completed 200 OK in 35ms (Views: 33.3ms | ActiveRecord: 0.9ms)
 Started GET "/airplanes" for 127.0.0.1 at 2018-10-31 14:24:09 +1100
 Started GET "/flight" for 127.0.0.1 at 2018-10-31 14:24:09 +1100
 Processing by AirplanesController#index as HTML
-  
+
   [1m[36mAirplane Load (0.8ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes"[0m
   ↳ app/controllers/airplanes_controller.rb:16
 Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.8ms)
 
 
 ActionController::RoutingError (No route matches [GET] "/flight"):
-  
+
 actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
@@ -2854,14 +2854,14 @@ puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
 Started GET "/airplanes" for 127.0.0.1 at 2018-10-31 14:25:08 +1100
 Started GET "/flight" for 127.0.0.1 at 2018-10-31 14:25:08 +1100
 Processing by AirplanesController#index as HTML
-  
+
   [1m[36mAirplane Load (0.8ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes"[0m
   ↳ app/controllers/airplanes_controller.rb:16
 Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.8ms)
 
 
 ActionController::RoutingError (No route matches [GET] "/flight"):
-  
+
 actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
@@ -2893,11 +2893,11 @@ puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
 Started GET "/flight" for 127.0.0.1 at 2018-10-31 14:25:24 +1100
 Started GET "/airplanes" for 127.0.0.1 at 2018-10-31 14:25:24 +1100
 Processing by AirplanesController#index as HTML
-  
+
   [1m[36mAirplane Load (0.9ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes"[0m
 ActionController::RoutingError (No route matches [GET] "/flight"):
   ↳ app/controllers/airplanes_controller.rb:16
-  
+
 Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.9ms)
 
 
@@ -2932,9 +2932,9 @@ puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
 Started GET "/airplanes" for 127.0.0.1 at 2018-10-31 14:25:40 +1100
 Started GET "/flight" for 127.0.0.1 at 2018-10-31 14:25:40 +1100
 Processing by AirplanesController#index as HTML
-  
+
 ActionController::RoutingError (No route matches [GET] "/flight"):
-  
+
   [1m[36mAirplane Load (0.9ms)[0m  [1m[34mSELECT "airplanes".* FROM "airplanes"[0m
 actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
@@ -2971,9 +2971,9 @@ Completed 200 OK in 47ms (Views: 46.0ms | ActiveRecord: 0.9ms)
 Started GET "/airplanes" for 127.0.0.1 at 2018-10-31 14:25:43 +1100
 Started GET "/flight" for 127.0.0.1 at 2018-10-31 14:25:43 +1100
 Processing by AirplanesController#index as HTML
-  
+
 ActionController::RoutingError (No route matches [GET] "/flight"):
-  
+
 actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
@@ -3022,9 +3022,9 @@ Started GET "/flight" for 127.0.0.1 at 2018-10-31 14:26:23 +1100
 Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.7ms)
 
 
-  
+
 ActionController::RoutingError (No route matches [GET] "/flight"):
-  
+
 actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
@@ -3056,9 +3056,9 @@ puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
 Started GET "/airplanes" for 127.0.0.1 at 2018-10-31 14:26:50 +1100
 Started GET "/flight" for 127.0.0.1 at 2018-10-31 14:26:50 +1100
 Processing by AirplanesController#index as HTML
-  
+
 ActionController::RoutingError (No route matches [GET] "/flight"):
-  
+
 actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
@@ -3510,6 +3510,7 @@ Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.5ms)
   [1m[36mFlight Load (0.8ms)[0m  [1m[34mSELECT "flights".* FROM "flights"[0m
   ↳ app/controllers/flights_controller.rb:16
 Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.8ms)
+<<<<<<< HEAD
 
 
 Started GET "/airplanes" for 127.0.0.1 at 2018-10-31 14:48:04 +1100
@@ -3786,3 +3787,5 @@ Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.6ms)
 Completed 200 OK in 6ms (Views: 2.8ms | ActiveRecord: 3.3ms)
 
 
+=======
+>>>>>>> 77957ed2f24c9894492736161053b0dab54667eb

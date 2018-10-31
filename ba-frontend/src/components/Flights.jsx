@@ -23,11 +23,9 @@ const createTable = props => {
 const Planeseats = props => {
   console.log(props);
     return (
-      <div>
         <div>
           {createTable(props)}
         </div>
-      </div>
     )
 }
 
@@ -44,12 +42,12 @@ class Flights extends Component {
   // AJAX request to rails for user and current seats taken????
   componentDidMount() {
     const paramsFlightID = parseInt(this.props.match.params.flightid)
+    const pararmsAirplaneID = parseInt(this.props.match.params.airplaneid)
 
     // get the particular plane
-   axios.get('http://localhost:3000/airplanes')
+   axios.get('http://localhost:3000/airplanes.json')
    .then(response => {
      let plane;
-     const pararmsAirplaneID = parseInt(this.props.match.params.airplaneid)
      // console.log('array of plane objects: ', response.data)
      plane = response.data.filter(el => el.id === pararmsAirplaneID)
      this.setState({
@@ -59,7 +57,7 @@ class Flights extends Component {
    .catch(console.warn)
 
    // get the particular flight
-   axios.get('http://localhost:3000/flights')
+   axios.get('http://localhost:3000/flights.json')
    .then(response => {
      let flight;
      // console.log('array of flight objects: ', response.data)
@@ -71,7 +69,8 @@ class Flights extends Component {
    })
    .catch(console.warn)
 
-   axios.get('http://localhost:3000/reservations')
+   // get all reservations for this particular flight
+   axios.get('http://localhost:3000/reservations.json')
    .then(response => {
      let reservationsTaken;
      console.log(response.data);

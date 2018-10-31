@@ -1,16 +1,38 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import '../App.css'
 
+const createTable = props => {
+  console.log(props);
+  let table = []
 
-class Planeseats extends Component {
-  render() {
+  // Outer loop to create parent
+  for (let i = 0; i < props.columns; i++) {
+    let children = []
+    //Inner loop to create children
+    for (let j = 0; j < props.rows; j++) {
+      children.push(<div>{`C${i + 1} R${j + 1}`}</div>)
+    }
+    //Create the parent and add the children
+    table.push(<div>{children}</div>)
+  }
+  return table
+}
+
+const Planeseats = props => {
+  console.log(props);
     return (
       <div>
+<<<<<<< HEAD
 
+=======
+        <div>
+          {createTable(props)}
+        </div>
+>>>>>>> e09f63551f808bd6e7b86c3b8160eddcf2a3ffbe
       </div>
     )
-  }
 }
 
 class Flights extends Component {
@@ -75,7 +97,7 @@ class Flights extends Component {
     return(
       <div>
         <h1>FLIGHT with ID: {this.props.match.params.flightid}</h1>
-        <Planeseats />
+        <Planeseats rows={this.state.plane.rows} columns={this.state.plane.columns}/>
       </div>
 
     )

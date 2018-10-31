@@ -20,6 +20,7 @@ class Flights extends Component {
   }
 
   componentDidMount() {
+    console.log('this', this);
     const paramsFlightID = parseInt(this.props.match.params.flightid)
     const pararmsAirplaneID = parseInt(this.props.match.params.airplaneid)
 

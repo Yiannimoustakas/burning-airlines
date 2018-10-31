@@ -1,0 +1,9 @@
+<h2>Airplanes Listing</h2>
+
+<ul>
+<% @airplanes.each do |airplane| %>
+  <li>
+    <%= link_to airplane.name, airplane_path(airplane.id) %>
+  </li>
+<% end %>
+</ul>

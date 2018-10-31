@@ -12,7 +12,7 @@ const createTable = props => {
     let children = []
     //Inner loop to create children
     for (let j = 0; j < props.rows; j++) {
-      children.push(<div>{`C${i + 1} R${j + 1}`}</div>)
+      children.push(<div><div>{`C${i + 1} R${j + 1}`}</div></div>)
     }
     //Create the parent and add the children
     table.push(<div>{children}</div>)

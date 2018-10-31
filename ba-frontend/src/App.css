@@ -39,3 +39,25 @@
   text-decoration: underline;
   font-weight: bold;
 }
+
+.grid-container {
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
+  grid-auto-rows: auto auto auto;
+  justify-content: center;
+  border: 1px solid red;
+  height: 100px;
+  width: 100px;
+  padding: 10px;
+}
+
+.grid-container:hover {
+  border: 2px solid red;
+}
+
+.grid-item {
+  padding: 2px;
+  text-align: center;
+  padding: 10px;
+  /* border: 1px solid red; */
+}

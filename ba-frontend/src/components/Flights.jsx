@@ -4,24 +4,24 @@ import {Link} from 'react-router-dom';
 import '../App.css'
 
 const createTable = props => {
-  console.log(props);
+  // console.log(props);
   let table = []
 
   // Outer loop to create parent
-  for (let i = 0; i < props.columns; i++) {
+  for (let i = 0; i < props.rows; i++) {
     let children = []
     //Inner loop to create children
-    for (let j = 0; j < props.rows; j++) {
-      children.push(<div><div>{`C${i + 1} R${j + 1}`}</div></div>)
+    for (let j = 0; j < props.columns; j++) {
+      children.push(<div row={`${i + 1}`} col={`${j + 1}`} className="grid-container" >{`R${i + 1} C${j + 1}`}</div>)
     }
     //Create the parent and add the children
-    table.push(<div>{children}</div>)
+    table.push(<div className="grid-item">{children}</div>)
   }
   return table
 }
 
 const Planeseats = props => {
-  console.log(props);
+  // console.log(props);
     return (
         <div>
           {createTable(props)}
@@ -41,6 +41,7 @@ class Flights extends Component {
 
   // AJAX request to rails for user and current seats taken????
   componentDidMount() {
+    console.log('this', this);
     const paramsFlightID = parseInt(this.props.match.params.flightid)
     const pararmsAirplaneID = parseInt(this.props.match.params.airplaneid)
 
@@ -91,7 +92,7 @@ class Flights extends Component {
     return(
       <div>
         <h1>FLIGHT with ID: {this.props.match.params.flightid}</h1>
-        <Planeseats rows={this.state.plane.rows} columns={this.state.plane.columns}/>
+        <Planeseats rows={this.state.plane.rows} columns={this.state.plane.columns} reservedSeat={this.state.reservations}/>
       </div>
 
     )

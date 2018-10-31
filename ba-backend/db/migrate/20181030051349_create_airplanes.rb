@@ -5,6 +5,7 @@ class CreateAirplanes < ActiveRecord::Migration[5.2]
       t.integer :rows
       t.integer :columns
 
+
       t.timestamps
     end
   end

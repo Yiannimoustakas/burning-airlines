@@ -35,7 +35,7 @@ class SearchResults extends Component {
 
   //NEED AJAX request for JSON to set data
   componentDidMount() {
-    axios.get('http://localhost:3000/flights')
+    axios.get('http://localhost:3000/flights.json')
     .then(response => {
       console.log(response.data);
       this.setState(this.state = {

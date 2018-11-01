@@ -179,9 +179,9 @@ class Seats extends Component {
   }
 
   handleClick = () => {
-    console.log(this.props.columnPicked);
-    console.log(this.props.rowPicked)
-    console.log(this.props.selectedSeat);
+    // console.log(this.props.columnPicked);
+    // console.log(this.props.rowPicked)
+    // console.log(this.props.selectedSeat);
     this.props.onClick(this.props.columnPicked);
 
     this.setState({
@@ -196,7 +196,7 @@ class Seats extends Component {
     return(
       <div
         style={{backgroundColor: bgColor}}
-        className='seat'
+        className="seat"
         onClick={this.handleClick}
       >
         <div>row: {this.props.rowPicked}</div>

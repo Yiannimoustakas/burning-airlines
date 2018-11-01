@@ -1,28 +1,27 @@
 class ReservationsController < ApplicationController
+
+  skip_before_action :verify_authenticity_token
+
   def new
     @reservation = Reservation.new
   end
 
   def create
-    @reservation = Reservation.new(reservation_params)
-    @reservation.user = @current_user
-    @flights = Flight.all
-    @reservation.flights << Flight.find(params[:flights])
-    @reservation.save
-    # console
-    # raise "hell"
+    # @reservation = Reservation.new(reservation_params)
+    # @reservation.user = @current_user
+    # @flights = Flight.all
+    # @reservation.flights << Flight.find(params[:flights])
+    # @reservation.save
+    # # console
+    # # raise "hell"
 
-    if @reservation.persisted?
-        redirect_to reservation_path(@reservation.id)
-    else
-      flash[:errors] = @reservation.errors.full_messages
-      # raise "hell"
-      render :new
-    end
+
+    reservation = Reservation.create(user_id: params[:user_id], flight_id: params[:flight_id], seat_row: params[:seat_row], seat_column: params[:seat_column])
+    render json: {reservation: reservation, created: true}
   end
 
+
   def index
-    # @reservation = Reserevation.all
     render json: Reservation.all
   end
 

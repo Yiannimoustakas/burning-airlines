@@ -135,6 +135,7 @@ class Flights extends Component {
     return(
       <div>
         <h1>FLIGHT with ID: {this.props.match.params.flightid}</h1>
+<<<<<<< HEAD
         {
           this.state.selectedSeat.row ?
           <h1> Selected Seat is (Row:{this.state.selectedSeat.row}, Col:{this.state.selectedSeat.col})</h1>
@@ -148,6 +149,8 @@ class Flights extends Component {
             Reserve Seat
           </button>
         </form>
+=======
+>>>>>>> c03455c53fb1a0f8aad2c4f191f97fe15a8d7953
         <div className='fixedCard'>
           {
             this.state.selectedSeat.row ?

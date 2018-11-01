@@ -2,11 +2,13 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import '../App.css'
+import SubmitButton from '../components/SubmitButton'
 
 class Flights extends Component {
   constructor() {
     super()
     this.state = {
+      userId: 3,
       reservationState: [], //probably not needed
       totalRows: [],
       totalCols: [],
@@ -70,6 +72,7 @@ class Flights extends Component {
    // get all reservations for this particular flight
    axios.get('http://localhost:3000/reservations.json')
    .then(response => {
+     console.log('RESERVATIONS')
      let reservationsTaken;
      let reservationsArray = [];
      reservationsTaken = response.data.filter(el => el.flight_id === paramsFlightID) //array of objects
@@ -85,15 +88,6 @@ class Flights extends Component {
 
   } // component did mount
 
-//FOR FUTURE SUBMIT BUTTON?
-  // axios.post('http://localhost:3000/reservations.json', {content: ???})
-  // .then(response => {
-  //   this.setState({
-  //     reservations: ????
-  //   })
-  // })
-
-
   handleClick = (row, col) => {
     console.log('row and col from FLIGHTS PARENT:', row, col);
     this.setState({
@@ -105,13 +99,40 @@ class Flights extends Component {
     })
   }
 
+  handleReserve = (event) => {
+    console.log('flight id: ', this.state.flight.id)
+    console.log('userId: ', this.state.userId)
+    console.log('row,col: ', this.state.selectedSeat.row, this.state.selectedSeat.col)
+
+    if (this.state.selectedSeat.row) {
+      axios.post('http://localhost:3000/reservations.json', {
+        user_id: this.state.userId,
+        flight_id: this.state.flight.id,
+        seat_row: this.state.selectedSeat.row,
+        seat_column: this.state.selectedSeat.col,
+      })
+      .then(response => {
+        console.log(response.data)
+      })
+      .catch(console.warn)
+    }
+
+  }
+
   render() {
     return(
       <div>
         <h1>FLIGHT with ID: {this.props.match.params.flightid}</h1>
         <h1> Selected Seat is (Row:{this.state.selectedSeat.row}, Col:{this.state.selectedSeat.col})</h1>
+
+        <form onSubmit={ev => this.handleReserve(ev)}>
+          <button type="submit">
+            Reserve Seat
+          </button>
+        </form>
         {this.state.totalRows.map(rowNumber =>
           <Row
+            alreadyReserved={this.state.alreadyReserved}
             selectedSeat={this.state.selectedSeat}
             rowPicked={rowNumber}
             columnArray={this.state.totalCols}
@@ -127,7 +148,6 @@ class Flights extends Component {
 
 class Row extends Component {
   handleClick = (colNumber) => {
-    console.log(this.props.rowPicked)
     this.props.onClick(this.props.rowPicked, colNumber)
   }
 
@@ -136,6 +156,7 @@ class Row extends Component {
       <div>
         {this.props.columnArray.map(colNumber =>
           <Seats
+            alreadyReserved={this.props.alreadyReserved}
             selectedSeat={this.props.selectedSeat}
             className="row"
             rowPicked={this.props.rowPicked}
@@ -159,6 +180,8 @@ class Seats extends Component {
 
   handleClick = () => {
     console.log(this.props.columnPicked);
+    console.log(this.props.rowPicked)
+    console.log(this.props.selectedSeat);
     this.props.onClick(this.props.columnPicked);
 
     this.setState({
@@ -166,6 +189,7 @@ class Seats extends Component {
       clickedCol: this.props.columnPicked
     })
   }
+
 
   render() {
     const bgColor = (this.state.clickedRow === this.props.rowPicked && this.state.clickedColumn === this.props.colPicked) ? 'grey' : 'green';

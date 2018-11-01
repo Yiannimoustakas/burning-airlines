@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import SearchResults from '../components/SearchResults';
+import '../App.css'
 
 class Search extends Component {
   constructor() {

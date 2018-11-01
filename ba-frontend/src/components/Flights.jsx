@@ -9,11 +9,10 @@ class Flights extends Component {
     super()
     this.state = {
       userId: 4,
-      reservationState: [], //probably not needed
       totalRows: [],
       totalCols: [],
       flight: {},
-      alreadyReserved: [], // not sure??
+      alreadyReserved: [],
       selectedSeat: {
         row: null,
         col: null,
@@ -34,21 +33,16 @@ class Flights extends Component {
      let rowArray = new Array(plane[0].rows).fill(null);
      let colArray = new Array(plane[0].columns).fill(null);
 
+     // making row array of [1, 2, 3, 4 ... row.length]
      for (let i = 0; i < rowArray.length; i++) {
        rowArray[i] = i + 1
      }
+      // making col array of [1, 2, 3, 4 ... col.length]
      for (let i = 0; i < colArray.length; i++) {
        colArray[i] = i + 1
      }
 
-     let emptyColArray = new Array(plane[0].columns).fill(null);
-
-     for (let i = 0; i < plane[0].rows; i++) {
-       flightArray.push(emptyColArray);
-     }
-
      this.setState({
-       reservationState: flightArray,
        totalRows: rowArray,
        totalCols: colArray,
      })
@@ -73,7 +67,7 @@ class Flights extends Component {
    .then(response => {
      let reservationsTaken;
      let reservationsArray = [];
-     reservationsTaken = response.data.filter(el => el.flight_id === paramsFlightID) //array of objects
+     reservationsTaken = response.data.filter(el => el.flight_id === paramsFlightID) //array of objects grabs the plane with ID params
 
      reservationsTaken.map(flight => {
        reservationsArray.push([flight.seat_row, flight.seat_column])
@@ -134,23 +128,7 @@ class Flights extends Component {
   render() {
     return(
       <div>
-        <h1>FLIGHT with ID: {this.props.match.params.flightid}</h1>
-<<<<<<< HEAD
-        {
-          this.state.selectedSeat.row ?
-          <h1> Selected Seat is (Row:{this.state.selectedSeat.row}, Col:{this.state.selectedSeat.col})</h1>
-          :
-          <h1> Select a Seat </h1>
-        }
-        {/* <h1> Selected Seat is (Row:{this.state.selectedSeat.row}, Col:{this.state.selectedSeat.col})</h1> */}
-
-        <form onSubmit={ev => this.handleReserve(ev)}>
-          <button className="reserveSeat" type="submit">
-            Reserve Seat
-          </button>
-        </form>
-=======
->>>>>>> c03455c53fb1a0f8aad2c4f191f97fe15a8d7953
+        <h1>FLIGHT with ID: {this.props.match.params.flightid} - {this.state.flight.origin} to {this.state.flight.destination}</h1>
         <div className='fixedCard'>
           {
             this.state.selectedSeat.row ?

@@ -55,15 +55,15 @@ background-size: cover;
   margin: 10px;
 }
 
-<<<<<<< HEAD
+
 .hello {
   color: white;
   /* pointer-events: none; */
-=======
+}
+
 .search, .result {
   /* background-color: lavender; */
   color: white;
   margin-top: -10px;
   text-align: center;
->>>>>>> e6b6dbd92831ee804c1ea5ebc32b54576e51fc10
 }

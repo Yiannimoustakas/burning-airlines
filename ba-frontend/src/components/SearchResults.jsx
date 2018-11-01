@@ -54,7 +54,7 @@ class SearchResults extends Component {
         <span className='result resultTitle'>From > To</span>
         <span className='result resultTitle'>Plane</span>
         <ul>
-          <FlightInfo flights={this.state.flights} from={this.props.match.params.from} to={this.props.match.params.to}/>
+          <FlightInfo className="searchResults" flights={this.state.flights} from={this.props.match.params.from} to={this.props.match.params.to}/>
         </ul>
       </div>
     )

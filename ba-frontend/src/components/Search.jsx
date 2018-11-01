@@ -34,19 +34,28 @@ class Search extends Component {
   render() {
     return(
       <div>
-        <h1>Burning Airlines</h1>
-        <form onSubmit={ev => this.handleSubmit(ev)}>
-          <div>
-            FROM:
-            <input type="text" onChange={ev => this.handleInputFrom(ev)}></input>
+        <div id="formWrapper">
+          <div id="form">
+              <div className="logo">
+                <h1> Welcome to Burning Airlines</h1>
+                <h4>WHERE WOULD YOU LIKE TO GO?</h4>
+              </div>
+            <form onSubmit={ev => this.handleSubmit(ev)}>
+          		<div className="form-item">
+          			<p className="formLabel"></p>
+          			<input type="text" id="email" className="form-style" placeholder="From" onChange={ev => this.handleInputFrom(ev)}/>
+          		</div>
+          		<div className="form-item">
+          			<p className="formLabel"></p>
+          			<input type="text" id="password" className="form-style" placeholder="To" onChange={ev => this.handleInputTo(ev)}/>
+          		</div>
+          		<div className="form-item">
+        		    <input type="submit" className="login pull-right" value="Submit"/>
+      		      <div className="clear-fix"></div>
+          		</div>
+            </form>
           </div>
-          <div>
-            TO:
-            <input type="text" onChange={ev => this.handleInputTo(ev)}></input>
-          </div>
-
-          <input className="reserveSeat" type="submit" value="Search"></input>
-         </form>
+        </div>
       </div>
     )
   }

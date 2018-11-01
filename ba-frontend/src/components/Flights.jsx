@@ -21,64 +21,66 @@ class Flights extends Component {
   }
 
   componentDidMount() {
-    const paramsFlightID = parseInt(this.props.match.params.flightid)
-    const pararmsAirplaneID = parseInt(this.props.match.params.airplaneid)
+    setInterval( () => {
+      const paramsFlightID = parseInt(this.props.match.params.flightid)
+      const pararmsAirplaneID = parseInt(this.props.match.params.airplaneid)
 
-    // get the particular plane
-   axios.get('http://localhost:3000/airplanes.json')
-   .then(response => {
-     let flightArray = [];
-     let plane = response.data.filter(el => el.id === pararmsAirplaneID);
+      // get the particular plane
+     axios.get('http://localhost:3000/airplanes.json')
+     .then(response => {
+       let flightArray = [];
+       let plane = response.data.filter(el => el.id === pararmsAirplaneID);
 
-     let rowArray = new Array(plane[0].rows).fill(null);
-     let colArray = new Array(plane[0].columns).fill(null);
+       let rowArray = new Array(plane[0].rows).fill(null);
+       let colArray = new Array(plane[0].columns).fill(null);
 
-     // making row array of [1, 2, 3, 4 ... row.length]
-     for (let i = 0; i < rowArray.length; i++) {
-       rowArray[i] = i + 1
-     }
-      // making col array of [1, 2, 3, 4 ... col.length]
-     for (let i = 0; i < colArray.length; i++) {
-       colArray[i] = i + 1
-     }
+       // making row array of [1, 2, 3, 4 ... row.length]
+       for (let i = 0; i < rowArray.length; i++) {
+         rowArray[i] = i + 1
+       }
+        // making col array of [1, 2, 3, 4 ... col.length]
+       for (let i = 0; i < colArray.length; i++) {
+         colArray[i] = i + 1
+       }
 
-     this.setState({
-       totalRows: rowArray,
-       totalCols: colArray,
+       this.setState({
+         totalRows: rowArray,
+         totalCols: colArray,
+       })
      })
-   })
-   .catch(console.warn)
+     .catch(console.warn)
 
-   // get the particular flight
-   axios.get('http://localhost:3000/flights.json')
-   .then(response => {
-     let flight;
-     // console.log('array of flight objects: ', response.data)
-     flight = response.data.filter(el => el.id === paramsFlightID)
-     // console.log(flight[0]);
-     this.setState({
-       flight: flight[0],
+     // get the particular flight
+     axios.get('http://localhost:3000/flights.json')
+     .then(response => {
+       let flight;
+       // console.log('array of flight objects: ', response.data)
+       flight = response.data.filter(el => el.id === paramsFlightID)
+       // console.log(flight[0]);
+       this.setState({
+         flight: flight[0],
+       })
      })
-   })
-   .catch(console.warn)
+     .catch(console.warn)
 
-   // get all reservations for this particular flight
-   axios.get('http://localhost:3000/reservations.json')
-   .then(response => {
-     let reservationsTaken;
-     let reservationsArray = [];
-     reservationsTaken = response.data.filter(el => el.flight_id === paramsFlightID) //array of objects grabs the plane with ID params
+     // get all reservations for this particular flight
+     axios.get('http://localhost:3000/reservations.json')
+     .then(response => {
+       let reservationsTaken;
+       let reservationsArray = [];
+       reservationsTaken = response.data.filter(el => el.flight_id === paramsFlightID) //array of objects grabs the plane with ID params
 
-     reservationsTaken.map(flight => {
-       reservationsArray.push([flight.seat_row, flight.seat_column])
-     }) //converting to array of arrays
-     this.setState({
-       alreadyReserved: reservationsArray,
+       reservationsTaken.map(flight => {
+         reservationsArray.push([flight.seat_row, flight.seat_column])
+       }) //converting to array of arrays
+       this.setState({
+         alreadyReserved: reservationsArray,
+       })
      })
-   })
-   .catch(console.warn)
+     .catch(console.warn)
 
-  } // component did mount
+   }, 1000) // component did mount
+  }
 
   handleClick = (row, col) => {
     console.log('row and col from FLIGHTS PARENT:', row, col);

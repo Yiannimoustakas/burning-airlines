@@ -144,7 +144,7 @@ class Flights extends Component {
         {/* <h1> Selected Seat is (Row:{this.state.selectedSeat.row}, Col:{this.state.selectedSeat.col})</h1> */}
 
         <form onSubmit={ev => this.handleReserve(ev)}>
-          <button type="submit">
+          <button className="reserveSeat" type="submit">
             Reserve Seat
           </button>
         </form>

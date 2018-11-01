@@ -8,8 +8,8 @@ class Home extends Component {
   render() {
     return(
       <div>
-        <Link to="/search"><button>SEARCH</button></Link>
-        <h2>USERID???</h2>
+        <h2>Hello, User</h2>
+        <Link to="/search"><button className="reserveSeat">Find A Flight</button></Link>
         <hr/>
       </div>
     )

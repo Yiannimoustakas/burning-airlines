@@ -72,7 +72,6 @@ class Flights extends Component {
    // get all reservations for this particular flight
    axios.get('http://localhost:3000/reservations.json')
    .then(response => {
-     console.log('RESERVATIONS')
      let reservationsTaken;
      let reservationsArray = [];
      reservationsTaken = response.data.filter(el => el.flight_id === paramsFlightID) //array of objects
@@ -102,6 +101,7 @@ class Flights extends Component {
     console.log('flight id: ', this.state.flight.id)
     console.log('userId: ', this.state.userId)
     console.log('row,col: ', this.state.selectedSeat.row, this.state.selectedSeat.col)
+    event.preventDefault();
 
     if (this.state.selectedSeat.row) {
       axios.post('http://localhost:3000/reservations.json', {
@@ -111,7 +111,17 @@ class Flights extends Component {
         seat_column: this.state.selectedSeat.col,
       })
       .then(response => {
-        console.log(response.data)
+        let bookedSeatArray = [];
+        bookedSeatArray.push(this.state.selectedSeat.row);
+        bookedSeatArray.push(this.state.selectedSeat.col);
+
+        let newReserved = this.state.alreadyReserved
+        newReserved.push(bookedSeatArray)
+
+        console.log('newreservearray', newReserved)
+        this.setState({
+          alreadyReserved: newReserved,
+        })
       })
       .catch(console.warn)
     }
@@ -174,7 +184,7 @@ class Seats extends Component {
     this.state = {
       clickedRow: null,
       clickedCol: null,
-      clicked: 1,
+      clicked: !true,
     }
   }
 

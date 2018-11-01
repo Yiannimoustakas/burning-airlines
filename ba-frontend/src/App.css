@@ -1,6 +1,6 @@
 body {
-background-image: url('https://s3.amazonaws.com/assets.dischord.com/images.d/release/image/448765/BA_ARR_Box_170221-4.jpg');
-background-size: cover;
+/* background-image: url('https://s3.amazonaws.com/assets.dischord.com/images.d/release/image/448765/BA_ARR_Box_170221-4.jpg');
+background-size: cover; */
 }
 
 .App {
@@ -66,4 +66,20 @@ background-size: cover;
   color: white;
   margin-top: -10px;
   text-align: center;
+}
+
+.redBG {
+  border: 5px solid transparent;
+  background-color: red;
+  pointer-events: none;
+}
+
+.greenBG {
+  border: 5px solid transparent;
+  background-color: green;
+}
+
+.borderClick {
+  background-color: gray;
+  border: 5px solid black;
 }

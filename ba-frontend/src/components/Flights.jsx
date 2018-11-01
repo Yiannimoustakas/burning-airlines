@@ -8,7 +8,7 @@ class Flights extends Component {
   constructor() {
     super()
     this.state = {
-      userId: 3,
+      userId: 4,
       reservationState: [], //probably not needed
       totalRows: [],
       totalCols: [],
@@ -119,6 +119,10 @@ class Flights extends Component {
 
         console.log('newreservearray', newReserved)
         this.setState({
+          selectedSeat: {
+            row: null,
+            col: null,
+          },
           alreadyReserved: newReserved,
         })
       })
@@ -131,7 +135,12 @@ class Flights extends Component {
     return(
       <div>
         <h1>FLIGHT with ID: {this.props.match.params.flightid}</h1>
-        <h1> Selected Seat is (Row:{this.state.selectedSeat.row}, Col:{this.state.selectedSeat.col})</h1>
+        {this.state.selectedSeat.row ?
+          <h1> Selected Seat is (Row:{this.state.selectedSeat.row}, Col:{this.state.selectedSeat.col})</h1>
+          :
+          <h1> Select a Seat </h1>
+}
+        {/* <h1> Selected Seat is (Row:{this.state.selectedSeat.row}, Col:{this.state.selectedSeat.col})</h1> */}
 
         <form onSubmit={ev => this.handleReserve(ev)}>
           <button type="submit">
@@ -187,9 +196,6 @@ class Seats extends Component {
   }
 
   handleClick = () => {
-    // console.log(this.props.columnPicked);
-    // console.log(this.props.rowPicked)
-    // console.log(this.props.selectedSeat);
     this.props.onClick(this.props.columnPicked);
 
     this.setState({
@@ -198,30 +204,19 @@ class Seats extends Component {
     });
   }
 
-  componentDidUpdate(prevProps, prevState) {
-
-    if (prevProps.selectedSeat.row === this.state.clickedRow && prevProps.selectedSeat.col === this.state.clickedCol) {
-      let stringifyReservedArray = this.props.alreadyReserved.map(el => el.join(''));
-      console.log(stringifyReservedArray);
-      // if (this.props.alreadyReserved.some(el => {}))
+  isSeatReserved = () => {
+      let stringifyReservedArray = this.props.alreadyReserved.map(el => el.join('')); //join the row and col together and return an array e.g ["12", "95"] was [[1, 2], [9, 5]]
+      let isSeatReservedBoolean = stringifyReservedArray.some(el => el === this.props.rowPicked.toString()+this.props.columnPicked.toString())
+      return isSeatReservedBoolean //isSeatReserved should return true if seat is already reserved else false
     }
-    // if (this.props.alreadyReserved.map(el => {el}))
-      // console.log(this.props.columnPicked);
-      // console.log(this.props.rowPicked);
-      // console.log('what is this', this.props.alreadyReserved);
-  }
-
-  hello = () => {
-    return 'hello'
-    console.log('hello')
-  }
 
   render() {
-    const bgColor = (this.props.selectedSeat.col !== null && this.props.selectedSeat.row === this.state.clickedRow && this.props.selectedSeat.col === this.state.clickedCol) ? 'grey' : 'green';
+    // console.log(`${this.props.selectedSeat.row}` + `${this.props.selectedSeat.col}`)
+    const borderClick = (this.props.selectedSeat.col !== null && this.props.selectedSeat.row === this.state.clickedRow && this.props.selectedSeat.col === this.state.clickedCol) ? 'borderClick' : null;
+    const bgColor = (this.isSeatReserved()) ? 'redBG' : 'greenBG';
     return(
       <div
-        style={{backgroundColor: bgColor}}
-        className={`seat ${this.hello()}` }
+        className={`seat ${bgColor} ${borderClick}` }
         onClick={this.handleClick}
       >
         <div>row: {this.props.rowPicked}</div>

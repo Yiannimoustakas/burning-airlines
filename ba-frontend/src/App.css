@@ -49,3 +49,8 @@
   width: 80px;
   margin: 10px;
 }
+
+.hello {
+  color: white;
+  /* pointer-events: none; */
+}

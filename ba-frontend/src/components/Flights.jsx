@@ -22,7 +22,6 @@ class Flights extends Component {
   }
 
   componentDidMount() {
-    console.log('this', this);
     const paramsFlightID = parseInt(this.props.match.params.flightid)
     const pararmsAirplaneID = parseInt(this.props.match.params.airplaneid)
 
@@ -184,14 +183,10 @@ class Seats extends Component {
     this.state = {
       clickedRow: null,
       clickedCol: null,
-      clicked: !true,
     }
   }
 
   handleClick = () => {
-    console.log(this.props.columnPicked);
-    console.log(this.props.rowPicked)
-    console.log(this.props.selectedSeat);
     this.props.onClick(this.props.columnPicked);
 
     this.setState({
@@ -200,13 +195,30 @@ class Seats extends Component {
     });
   }
 
+  componentDidUpdate(prevProps, prevState) {
+
+    if (prevProps.selectedSeat.row === this.state.clickedRow && prevProps.selectedSeat.col === this.state.clickedCol) {
+      let stringifyReservedArray = this.props.alreadyReserved.map(el => el.join(''));
+      console.log(stringifyReservedArray);
+      // if (this.props.alreadyReserved.some(el => {}))
+    }
+    // if (this.props.alreadyReserved.map(el => {el}))
+      // console.log(this.props.columnPicked);
+      // console.log(this.props.rowPicked);
+      // console.log('what is this', this.props.alreadyReserved);
+  }
+
+  hello = () => {
+    return 'hello'
+    console.log('hello')
+  }
 
   render() {
     const bgColor = (this.props.selectedSeat.col !== null && this.props.selectedSeat.row === this.state.clickedRow && this.props.selectedSeat.col === this.state.clickedCol) ? 'grey' : 'green';
     return(
       <div
         style={{backgroundColor: bgColor}}
-        className='seat'
+        className={`seat ${this.hello()}` }
         onClick={this.handleClick}
       >
         <div>row: {this.props.rowPicked}</div>

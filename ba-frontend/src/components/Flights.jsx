@@ -135,11 +135,12 @@ class Flights extends Component {
     return(
       <div>
         <h1>FLIGHT with ID: {this.props.match.params.flightid}</h1>
-        {this.state.selectedSeat.row ?
+        {
+          this.state.selectedSeat.row ?
           <h1> Selected Seat is (Row:{this.state.selectedSeat.row}, Col:{this.state.selectedSeat.col})</h1>
           :
           <h1> Select a Seat </h1>
-}
+        }
         {/* <h1> Selected Seat is (Row:{this.state.selectedSeat.row}, Col:{this.state.selectedSeat.col})</h1> */}
 
         <form onSubmit={ev => this.handleReserve(ev)}>

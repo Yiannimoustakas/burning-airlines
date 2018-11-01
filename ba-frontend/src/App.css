@@ -20,7 +20,6 @@ background-size: cover; */
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .App-link {
@@ -63,7 +62,7 @@ background-size: cover; */
 
 .search, .result {
   /* background-color: lavender; */
-  color: white;
+  color: black;
   margin-top: -10px;
   text-align: center;
 }

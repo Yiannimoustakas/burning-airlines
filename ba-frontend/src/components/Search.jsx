@@ -33,7 +33,7 @@ class Search extends Component {
 
   render() {
     return(
-      <div className="search">
+      <div>
         <h1>Burning Airlines</h1>
         <form onSubmit={ev => this.handleSubmit(ev)}>
           <div>

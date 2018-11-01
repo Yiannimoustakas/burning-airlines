@@ -101,7 +101,6 @@ class Flights extends Component {
         row: row,
         col: col,
       }
-
     })
   }
 
@@ -154,6 +153,7 @@ class Seats extends Component {
     this.state = {
       clickedRow: null,
       clickedCol: null,
+      clicked: 1,
     }
   }
 
@@ -163,12 +163,12 @@ class Seats extends Component {
 
     this.setState({
       clickedRow: this.props.rowPicked,
-      clickedCol: this.props.columnPicked
-    })
+      clickedCol: this.props.columnPicked,
+    });
   }
 
   render() {
-    const bgColor = (this.state.clickedRow === this.props.rowPicked && this.state.clickedColumn === this.props.colPicked) ? 'grey' : 'green';
+    const bgColor = (this.props.selectedSeat.col !== null && this.props.selectedSeat.row === this.state.clickedRow && this.props.selectedSeat.col === this.state.clickedCol) ? 'grey' : 'green';
     return(
       <div
         style={{backgroundColor: bgColor}}

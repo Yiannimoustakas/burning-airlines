@@ -9,12 +9,14 @@ class UsersController < ApplicationController
     if user.persisted?
       # Account created successfully!
       session[:user_id] = user.id # Log in the new user!!
-      redirect_to user_path(user) # go to the show page for this user
+      # redirect_to user_path(user) # go to the show page for this user
+      redirect_to flights_path
     else
 
 
       flash[:errors] = user.errors.full_messages
-      redirect_to new_user_path
+      # redirect_to new_user_path
+      redirect_to flights_path
     end
   end
 

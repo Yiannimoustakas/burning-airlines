@@ -1,0 +1,9 @@
+<%= form_for @user do |f| %>
+  <fieldset>
+    <%= f.label :name %><!-- gives us a <label> tag -->
+    <%= f.text_field :name %> <!-- gives us <input type="text" name="name"> -->
+  </fieldset>
+
+  <%= f.submit %>
+
+<% end %>

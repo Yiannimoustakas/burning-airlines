@@ -45,7 +45,7 @@ class Search extends Component {
             <input type="text" onChange={ev => this.handleInputTo(ev)}></input>
           </div>
 
-          <input type="submit" value="Search"></input>
+          <input className="reserveSeat" type="submit" value="Search"></input>
          </form>
       </div>
     )
